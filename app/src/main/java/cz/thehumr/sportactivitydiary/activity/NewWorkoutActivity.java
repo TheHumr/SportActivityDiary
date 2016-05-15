@@ -251,7 +251,7 @@ public class NewWorkoutActivity extends AppCompatActivity implements AdapterView
     }
 
     public void showDatePickerDialog(){
-        DialogFragment datePickerFragment = new DatePickerFragment();
+        DialogFragment datePickerFragment = DatePickerFragment.newInstance(101);
         datePickerFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
@@ -318,13 +318,13 @@ public class NewWorkoutActivity extends AppCompatActivity implements AdapterView
             addressName = address.getFeatureName();
         }
         if (address.getLocality() != null) {
-            if (addressName != ""){
+            if (!"".equals(addressName)){
                 addressName = addressName + ", ";
             }
             addressName = addressName + address.getLocality();
         }
         if (address.getSubLocality() != null) {
-            if (addressName != ""){
+            if (!"".equals(addressName)){
                 addressName = addressName + ", ";
             }
             addressName = addressName + address.getSubLocality();

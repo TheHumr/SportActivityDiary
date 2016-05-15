@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -34,6 +35,8 @@ public class GoalsFragment extends Fragment {
     TextView textViewNumberOfRunningWorkouts;
     TextView textViewNumberOfWalkingWorkouts;
     TextView textViewNumberOfWorkouts;
+
+    TextView textViewDateFromOfGoal;
 
     ProgressBar progressBar;
 
@@ -88,6 +91,7 @@ public class GoalsFragment extends Fragment {
         textViewNumberOfRunningWorkouts = (TextView) getView().findViewById(R.id.txt_num_of_running_workouts);
         textViewNumberOfWalkingWorkouts = (TextView) getView().findViewById(R.id.txt_num_of_walking_workouts);
         textViewNumberOfWorkouts = (TextView) getView().findViewById(R.id.txt_num_of_workouts);
+        textViewDateFromOfGoal = (TextView) getView().findViewById(R.id.txt_date_of_goals);
 
         progressBar = (ProgressBar) getView().findViewById(R.id.progressBar);
 
@@ -109,15 +113,7 @@ public class GoalsFragment extends Fragment {
         imageViewWalking.setImageResource(R.drawable.walking);
         imageViewRunning.setImageResource(R.drawable.running);
 
-        numberOfWorkoutsDoneCycle = databaseHelper.getCountOfWorkoutsByType("Cycling", "2016-05-01");
-        numberOfWorkoutsDoneRun = databaseHelper.getCountOfWorkoutsByType("Running", "2016-05-01");
-        numberOfWorkoutsDoneWalk = databaseHelper.getCountOfWorkoutsByType("Walking", "2016-05-01");
-        numberOfWorkoutsDoneGoal = numberOfWorkoutsDoneCycle + numberOfWorkoutsDoneRun + numberOfWorkoutsDoneWalk;
 
-        numberOfDistanceDoneCycle = (int) databaseHelper.getSumOfDistanceByType("Cycling", "2016-05-01");
-        numberOfDistanceDoneRun = (int) databaseHelper.getSumOfDistanceByType("Running", "2016-05-01");
-        numberOfDistanceDoneWalk = (int) databaseHelper.getSumOfDistanceByType("Walking", "2016-05-01");
-        numberOfDistanceDoneGoal = numberOfDistanceDoneCycle + numberOfDistanceDoneRun + numberOfDistanceDoneWalk;
 
         updateViews();
 
@@ -141,8 +137,12 @@ public class GoalsFragment extends Fragment {
         }
 
         myNumberPicker.setMinValue(0);
-        myNumberPicker.setMaxValue(length);
-        myNumberPicker.setDisplayedValues(numberValues);
+        if (units.equals("Distance")){
+            myNumberPicker.setMaxValue(length);
+            myNumberPicker.setDisplayedValues(numberValues);
+        } else {
+            myNumberPicker.setMaxValue(20);
+        }
         switch (type){
             case 0:
                 if (units.equals("Workouts"))
@@ -247,6 +247,14 @@ public class GoalsFragment extends Fragment {
             }
         });
 
+        textViewDateFromOfGoal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogFragment datePickerFragment = DatePickerFragment.newInstance(102);
+                datePickerFragment.setTargetFragment(GoalsFragment.this, 101);
+                datePickerFragment.show(getActivity().getSupportFragmentManager(), "datePicker");
+            }
+        });
 
     }
 
@@ -257,6 +265,10 @@ public class GoalsFragment extends Fragment {
         units = sharedPref.getString("GOAL_UNITS", "Workouts");
         textViewGoalUnits.setText(units);
 
+        String dateFrom = sharedPref.getString("GOALS_DATE_FROM", "2016-01-01");
+
+        textViewDateFromOfGoal.setText(dateFrom);
+
         numberOfWorkoutsGoalCycle = sharedPref.getInt("NUMBER_OF_GOAL_CYCLE", 0);
         numberOfWorkoutsGoalRun = sharedPref.getInt("NUMBER_OF_GOAL_RUN", 0);
         numberOfWorkoutsGoalWalk = sharedPref.getInt("NUMBER_OF_GOAL_WALK", 0);
@@ -266,6 +278,16 @@ public class GoalsFragment extends Fragment {
         numberOfDistanceGoalRun = sharedPref.getInt("DISTANCE_OF_GOAL_RUN", 0);
         numberOfDistanceGoalWalk = sharedPref.getInt("DISTANCE_OF_GOAL_WALK", 0);
         numberOfDistanceGoal = numberOfDistanceGoalCycle + numberOfDistanceGoalRun + numberOfDistanceGoalWalk;
+
+        numberOfWorkoutsDoneCycle = databaseHelper.getCountOfWorkoutsByType("Cycling", dateFrom);
+        numberOfWorkoutsDoneRun = databaseHelper.getCountOfWorkoutsByType("Running", dateFrom);
+        numberOfWorkoutsDoneWalk = databaseHelper.getCountOfWorkoutsByType("Walking", dateFrom);
+        numberOfWorkoutsDoneGoal = numberOfWorkoutsDoneCycle + numberOfWorkoutsDoneRun + numberOfWorkoutsDoneWalk;
+
+        numberOfDistanceDoneCycle = (int) databaseHelper.getSumOfDistanceByType("Cycling", dateFrom);
+        numberOfDistanceDoneRun = (int) databaseHelper.getSumOfDistanceByType("Running", dateFrom);
+        numberOfDistanceDoneWalk = (int) databaseHelper.getSumOfDistanceByType("Walking", dateFrom);
+        numberOfDistanceDoneGoal = numberOfDistanceDoneCycle + numberOfDistanceDoneRun + numberOfDistanceDoneWalk;
 
 
         if (units.equals("Workouts")){
@@ -286,8 +308,6 @@ public class GoalsFragment extends Fragment {
             progressBar.setProgress(numberOfDistanceDoneGoal);
 
         }
-
-
     }
 
     @Override

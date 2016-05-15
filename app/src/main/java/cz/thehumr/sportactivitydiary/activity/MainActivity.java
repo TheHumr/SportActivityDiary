@@ -45,7 +45,20 @@ public class MainActivity extends AppCompatActivity implements DeleteWorkoutDial
         toolbar = (Toolbar) findViewById(R.id.app_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
+
+
+        Fragment fragment = null;
+
+        try {
+            fragment = ListOfWorkoutsFragment.class.newInstance();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.mainContent, fragment).commit();
 
         mDrawer = (DrawerLayout) findViewById(R.id.drawer_layout);
 
