@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ListPreference
+        android:key="distance_units_preference"
+        android:title="@string/title_distance_units_preference"
+        android:entries="@array/entries_distance_units_preference"
+        android:entryValues="@array/entryvalues_distance_units_preference"
+        android:summary="Kilometers"
+        android:dialogTitle="@string/dialog_title_distance_units_preference" />
+
+    <ListPreference
+        android:key="temperature_units_preference"
+        android:title="@string/title_temperature_units_preference"
+        android:entries="@array/entries_temperature_units_preference"
+        android:entryValues="@array/entryvalues_temperature_units_preference"
+        android:summary="°C"
+        android:dialogTitle="@string/dialog_title_temperature_units_preference" />
+
+
+</PreferenceScreen>

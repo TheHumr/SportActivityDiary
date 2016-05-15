@@ -1,0 +1,30 @@
+<resources>
+    <string name="app_name">SportsDiary</string>
+    <string name="title_activity_main">My workouts</string>
+
+    <string name="hello_world">Here are all my activities.</string>
+    <string name="action_settings">Settings</string>
+    <string name="new_activity">New workout</string>
+    <string name="title_workout_new">New workout</string>
+    <string name="title_workout_detail">Workout detail</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string-array name="activities_array">
+        <item>Cycling</item>
+        <item>Running</item>
+        <item>Walking</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
+
+    <string name="preference_file_key">cz.thehumr.sportactivitydiary.PREFERENCE_FILE_KEY</string>
+    <string name="title_distance_units_preference">Distance units</string>
+    <string name="dialog_title_distance_units_preference">Choose units...</string>
+    <string name="title_temperature_units_preference">Temperature units</string>
+    <string name="dialog_title_temperature_units_preference">Choose units...</string>
+</resources>

@@ -1,0 +1,264 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.NewWorkoutActivity">
+
+    <include
+        android:id="@+id/app_bar"
+        layout="@layout/app_bar" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/app_bar"
+        android:id="@+id/scrlView_new_workout"
+        android:padding="5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Activity type"
+                android:id="@+id/textView"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="bottom" />
+
+            <Spinner
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:id="@+id/spinner_activity_type"
+                android:spinnerMode="dropdown"
+                android:layout_alignParentTop="true"
+                android:layout_alignRight="@+id/mapContainer"
+                android:layout_alignEnd="@+id/mapContainer" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@color/lineColor"
+                android:layout_alignBottom="@+id/spinner_activity_type"
+                android:id="@+id/view_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Date"
+                android:id="@+id/textView2"
+                android:layout_below="@+id/view_line"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="bottom" />
+
+            <EditText
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:inputType="date"
+                android:ems="10"
+                android:cursorVisible="false"
+                android:id="@+id/editText_datepicker"
+                android:layout_alignTop="@+id/textView2"
+                android:layout_alignLeft="@+id/spinner_activity_type"
+                android:layout_alignStart="@+id/spinner_activity_type" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@color/lineColor"
+                android:id="@+id/view_line2"
+                android:layout_below="@+id/editText_datepicker" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Start from"
+                android:id="@+id/textView3"
+                android:layout_below="@+id/view_line2"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="bottom" />
+
+            <EditText
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:inputType="time"
+                android:ems="10"
+                android:id="@+id/editText_timepicker"
+                android:layout_alignTop="@+id/view_line2"
+                android:layout_alignLeft="@+id/editText_datepicker"
+                android:layout_alignStart="@+id/editText_datepicker" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@color/lineColor"
+                android:id="@+id/view_line3"
+                android:layout_below="@+id/editText_timepicker"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Duration"
+                android:id="@+id/textView4"
+                android:layout_below="@+id/view_line3"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="bottom" />
+
+            <EditText
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:inputType="time"
+                android:ems="10"
+                android:id="@+id/editText_duration"
+                android:hint="00:00"
+                android:layout_below="@+id/textView3"
+                android:layout_alignLeft="@+id/editText_timepicker"
+                android:layout_alignStart="@+id/editText_timepicker" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@color/lineColor"
+                android:id="@+id/view_line4"
+                android:layout_below="@+id/editText_duration" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Distance"
+                android:id="@+id/textView5"
+                android:layout_below="@+id/view_line4"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="bottom" />
+
+            <EditText
+                android:layout_width="150dp"
+                android:layout_height="50dp"
+                android:inputType="numberDecimal"
+                android:ems="10"
+                android:id="@+id/editText_distance"
+                android:hint="0.00"
+                android:layout_alignTop="@+id/view_line4"
+                android:layout_alignLeft="@+id/editText_duration"
+                android:layout_alignStart="@+id/editText_duration" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@color/lineColor"
+                android:id="@+id/view_line5"
+                android:layout_below="@+id/editText_distance" />
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/editText_description"
+                android:layout_below="@+id/textView5"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:singleLine="true"
+                android:lines="1"
+                android:hint="Write description.." />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Feeling"
+                android:id="@+id/textView7"
+                android:layout_below="@+id/editText_description"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="bottom" />
+
+            <RatingBar
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:id="@+id/ratingBar"
+                android:numStars="5"
+                android:rating="2.5"
+                android:stepSize="0.5"
+                android:layout_below="@+id/editText_description"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@color/lineColor"
+                android:id="@+id/view_line6"
+                android:layout_below="@+id/ratingBar" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Select New Location"
+                android:id="@+id/txt_select_new_location"
+                android:clickable="true"
+                android:layout_below="@+id/view_line7"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_vertical" />
+
+            <FrameLayout
+                android:id="@+id/mapContainer"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/txt_select_new_location" />
+
+            <ImageView
+                android:id="@+id/transparent_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_below="@+id/txt_select_new_location" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="Location"
+                android:id="@+id/textView25"
+                android:layout_below="@+id/view_line6"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="bottom" />
+
+            <Spinner
+                android:layout_width="200dp"
+                android:layout_height="50dp"
+                android:id="@+id/spinner_locations"
+                android:layout_alignTop="@+id/view_line6"
+                android:layout_alignParentLeft="false"
+                android:layout_alignParentStart="false"
+                android:spinnerMode="dialog"
+                android:layout_alignParentRight="true" />
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="2dp"
+                android:background="@color/lineColor"
+                android:id="@+id/view_line7"
+                android:layout_below="@+id/spinner_locations" />
+
+        </RelativeLayout>
+
+
+
+    </ScrollView>
+
+
+
+</RelativeLayout>

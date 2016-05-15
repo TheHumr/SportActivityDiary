@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="entries_distance_units_preference">
+        <item>Kilometers</item>
+        <item>Miles</item>
+    </string-array>
+    <string-array name="entryvalues_distance_units_preference">
+        <item>km</item>
+        <item>mi</item>
+    </string-array>
+    <string-array name="entries_temperature_units_preference">
+        <item>°C</item>
+        <item>°F</item>
+    </string-array>
+    <string-array name="entryvalues_temperature_units_preference">
+        <item>°C</item>
+        <item>°F</item>
+    </string-array>
+</resources>
